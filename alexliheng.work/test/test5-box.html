@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: gray;
+            margin-bottom: 10px;
+            display: none;
+        }
+        
+        .show {
+            display: block;
+        }
+        
+        #more-button {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">Box 1</div>
+        <div class="box">Box 2</div>
+        <div class="box">Box 3</div>
+        <div class="box">Box 4</div>
+        <div class="box">Box 5</div>
+        <div class="box">Box 6</div>
+        <div class="box">Box 7</div>
+        <div class="box">Box 8</div>
+        <button id="more-button">更多</button>
+    </div>
+
+    <script>
+        var boxes = document.querySelectorAll('.box');
+        var moreButton = document.getElementById('more-button');
+        var boxCount = 3;
+        
+        function showBoxes() {
+            for (var i = 0; i < boxCount; i++) {
+                boxes[i].classList.add('show');
+            }
+        }
+        
+        function hideMoreButton() {
+            moreButton.style.display = 'none';
+        }
+        
+        function showMoreBoxes() {
+            if (boxCount + 3 >= boxes.length) {
+                boxCount = boxes.length;
+                hideMoreButton();
+            } else {
+                boxCount += 3;
+            }
+            showBoxes();
+        }
+        
+        function resizeHandler() {
+            if (window.innerWidth > 641) {
+                boxCount = boxes.length;
+                showBoxes();
+                hideMoreButton();
+            } else if (window.innerWidth <= 640) {
+                showBoxes();
+                if (boxCount >= boxes.length) {
+                    hideMoreButton();
+                } else {
+                    moreButton.style.display = 'block';
+                }
+            }
+        }
+        
+        moreButton.addEventListener('click', showMoreBoxes);
+        window.addEventListener('resize', resizeHandler);
+        resizeHandler();
+    </script>
+</body>
+</html>

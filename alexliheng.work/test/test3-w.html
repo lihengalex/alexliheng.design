@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navigation Bar</title>
+    <style>
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .right {
+            display: flex;
+            align-items: center;
+        }
+
+        .desktop-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .desktop-menu li {
+            margin-right: 20px;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: relative;
+        }
+
+        .menu-toggle {
+            text-decoration: none;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            opacity: 0.55;
+        }
+
+        .mobile-menu-list {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #ffffff;
+            padding: 10px;
+        }
+
+        .mobile-menu-list li {
+            margin-bottom: 10px;
+        }
+
+        .mobile-menu.open .menu-toggle {
+            display: none;
+        }
+
+        .mobile-menu.open .mobile-menu-list {
+            display: block;
+        }
+
+        @media screen and (max-width: 640px) {
+            .desktop-menu {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .overlay {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <div class="left">
+                <a href=""><img src="./uploads/个站组件/logo-圆角.png" alt=""></a>
+            </div>
+            <div class="right">
+                <!-- 电脑端导航 -->
+                <ul class="desktop-menu">
+                    <li><a href="#aboutme">关于我</a></li>
+                    <li><a href="#info">基础信息</a></li>
+                    <li><a href="#creation">作品&文档</a></li>
+                    <li><a href="#">简历</a></li>
+                </ul>
+                <!-- 手机端导航 -->
+                <div class="mobile-menu">
+                    <a href="#" class="menu-toggle">菜单</a>
+                    <div class="overlay"></div>
+                    <ul class="mobile-menu-list">
+                        <li><a href="#aboutme">关于我</a></li>
+                        <li><a href="#info">基础信息</a></li>
+                        <li><a href="#creation">作品&文档</a></li>
+                        <li><a href="#">简历</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const overlay = document.querySelector('.overlay');
+
+        menuToggle.addEventListener('click', function () {
+            mobileMenu.classList.toggle('open');
+            overlay.style.display = mobileMenu.classList.contains('open') ? 'block' : 'none';
+        });
+
+        overlay.addEventListener('click', function () {
+            mobileMenu.classList.remove('open');
+            overlay.style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>
