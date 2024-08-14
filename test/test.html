@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>响应式导航栏</title>
+    <style>
+        /* 导航栏样式 */
+        nav {
+            background-color: #f1f1f1;
+            padding: 10px;
+        }
+
+        /* 桌面视图下的导航链接样式 */
+        .desktop-nav a {
+            display: inline-block;
+            margin-right: 10px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        /* 移动视图下的导航图标样式 */
+        .mobile-nav {
+            display: none;
+        }
+        
+        /* 移动视图下的菜单样式 */
+        .menu {
+            display: none;
+            background-color: #ddd;
+            padding: 10px;
+        }
+
+        /* 移动视图下的菜单链接样式 */
+        .menu a {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <!-- 桌面视图下的导航链接 -->
+        <div class="desktop-nav">
+            <a href="#section1">链接1</a>
+            <a href="#section2">链接2</a>
+            <a href="#section3">链接3</a>
+            <a href="#section4">链接4</a>
+        </div>
+
+        <!-- 移动视图下的导航图标 -->
+        <div class="mobile-nav">
+            <img src="menu-icon.png" alt="菜单图标">
+        </div>
+
+        <!-- 移动视图下的菜单 -->
+        <div class="menu">
+            <a href="#section1">链接1</a>
+            <a href="#section2">链接2</a>
+            <a href="#section3">链接3</a>
+            <a href="#section4">链接4</a>
+        </div>
+    </nav>
+
+    <script>
+        // JavaScript代码
+        // 当窗口尺寸改变时执行函数
+        window.onresize = function(event) {
+            var desktopNav = document.querySelector('.desktop-nav');
+            var mobileNav = document.querySelector('.mobile-nav');
+            var menu = document.querySelector('.menu');
+
+            // 如果窗口宽度小于等于640px，则显示移动视图下的导航
+            if (window.innerWidth <= 640) {
+                desktopNav.style.display = 'none';
+                mobileNav.style.display = 'block';
+            } else {  // 否则显示桌面视图下的导航
+                desktopNav.style.display = 'block';
+                mobileNav.style.display = 'none';
+                menu.style.display = 'none';  // 隐藏菜单层
+            }
+        };
+
+        // 点击移动视图下的导航图标时显示菜单
+        document.querySelector('.mobile-nav').onclick = function() {
+            var menu = document.querySelector('.menu');
+            menu.style.display = 'block';
+        };
+    </script>
+</body>
+</html>

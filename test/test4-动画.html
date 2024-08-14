@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Animation Test</title>
+    <style>
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%) translateY(-100%);
+            }
+            to {
+                transform: translateX(0) translateY(0);
+            }
+        }
+        
+        .mobile-menu-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            background-color: #CCC;
+            animation: slideIn 0.3s forwards;
+            display: none;
+        }
+        
+        .active {
+            display: block;
+        }
+        
+        button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button id="menu-button">Toggle Menu</button>
+    <ul class="mobile-menu-list">
+        <li>Menu Item 1</li>
+        <li>Menu Item 2</li>
+        <li>Menu Item 3</li>
+    </ul>
+    
+    <script>
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenuList = document.querySelector('.mobile-menu-list');
+
+        menuButton.addEventListener('click', function() {
+            mobileMenuList.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

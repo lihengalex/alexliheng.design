@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4129973 */
+  src: url('iconfont.woff2?t=1689155786356') format('woff2'),
+       url('iconfont.woff?t=1689155786356') format('woff'),
+       url('iconfont.ttf?t=1689155786356') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-menu:before {
+  content: "\e612";
+}
+
+.icon-close:before {
+  content: "\e613";
+}
+
+.icon-arrow_right:before {
+  content: "\e611";
+}
+
+.icon-logo_dribbble:before {
+  content: "\e610";
+}
+
+.icon-logo_unsplash:before {
+  content: "\e60c";
+}
+
+.icon-logo_yuque:before {
+  content: "\e60d";
+}
+
+.icon-logo_github:before {
+  content: "\e60e";
+}
+
+.icon-logo_wechat:before {
+  content: "\e60f";
+}
+
